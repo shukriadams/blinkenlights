@@ -1,0 +1,4 @@
+[basic]
+checkUrl=http://example.com:/status
+brightness=0.04
+pollInterval=10 
