@@ -33,9 +33,9 @@ print('- URL: {checkUrl}'.format(checkUrl=checkUrl))
 print('- brightness: {brightness}'.format(brightness=brightness))
 print('- pollInterval: {pollInterval}'.format(pollInterval=pollInterval))
 
-r = RGBColor(2)
-g = RGBColor(4)
-b = RGBColor(8)
+r = RGBColor(10)
+g = RGBColor(20)
+b = RGBColor(30)
 alt = False
 
 while True:
@@ -44,7 +44,6 @@ while True:
     try:
         data = urlopen(checkUrl).read() 
         passed = data.decode('utf-8') == "0"
-        passed = False
 
         r.increment()
         g.increment()
