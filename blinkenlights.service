@@ -1,0 +1,22 @@
+# Daemonize blinkenlights python script with this.
+# Create file /etc/systemd/system/blinkenlights.service, copy this script's content to it. then run :
+# sudo systemctl daemon-reload
+# sudo systemctl start blinkenlights
+# sudo systemctl enable blinkenlights
+
+[Unit]
+Description=blinky service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+WorkingDirectory=/home/pi/blinkenlights # this is wherever you've cloned blinketlights to 
+ExecStart=/usr/bin/python3.7 main.py
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=giveaway
+User=pi
+
+[Install]
+WantedBy=multi-user.target
