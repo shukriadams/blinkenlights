@@ -10,7 +10,8 @@ After=network.target
 StartLimitIntervalSec=0
 
 [Service]
-WorkingDirectory=/home/pi/blinkenlights # this is wherever you've cloned blinketlights to 
+# this is wherever you've cloned blinketlights to 
+WorkingDirectory=/home/pi/blinkenlights 
 ExecStart=/usr/bin/python3.7 main.py
 Restart=always
 StandardOutput=syslog
