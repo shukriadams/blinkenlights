@@ -1,7 +1,5 @@
-
-
 [Unit]
-Description=blinky service
+Description=blinkenlights - lights for arewedown server status
 After=network.target
 StartLimitIntervalSec=0
 
