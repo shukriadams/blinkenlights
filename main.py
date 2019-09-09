@@ -36,34 +36,39 @@ print('- pollInterval: {pollInterval}'.format(pollInterval=pollInterval))
 r = RGBColor(10)
 g = RGBColor(20)
 b = RGBColor(30)
-alt = False
+blink = False
 
 while True:
-    passed = False
 
+    passed = False
+    hasConnected = false
+    
     try:
         data = urlopen(checkUrl).read() 
         passed = data.decode('utf-8') == "0"
-
-        r.increment()
-        g.increment()
-        b.increment()
-        # gradually shift last light color on successful poll
-        set_pixel(7, r.value, g.value, b.value, brightness)
+        hasConnected = true
     except Exception as e:
         # show red no last light on connection error
         set_pixel(7, 255, 0, 0, brightness)
         print (e)    
+    
+    if hasConnected:
 
-    if passed == True:
-        set_pixel(0, 0, 128, 0, brightness)
-    else:
-        # alternate between red and blank to flash on fail
-        if alt:
-            set_pixel(0, 255, 0, 0, brightness)
+        # gradually shift last light color on successful poll
+        r.increment()
+        g.increment()
+        b.increment()
+        set_pixel(7, r.getValue(), g.getValue(), b.getValue(), brightness)
+
+        if passed == True:
+            set_pixel(0, 0, 128, 0, brightness)
         else:
-            set_pixel(0, 0, 0, 0)
-        alt = not alt
+            # alternate between blank and red to flash on fail
+            blink = not blink
+            if blink:
+                set_pixel(0, 0, 0, 0)
+            else:
+                set_pixel(0, 255, 0, 0, brightness)
 
     show()
     time.sleep(pollInterval)
