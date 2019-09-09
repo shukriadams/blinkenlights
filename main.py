@@ -41,12 +41,12 @@ blink = False
 while True:
 
     passed = False
-    hasConnected = false
+    hasConnected = False
     
     try:
         data = urlopen(checkUrl).read() 
         passed = data.decode('utf-8') == "0"
-        hasConnected = true
+        hasConnected = True
     except Exception as e:
         # show red no last light on connection error
         set_pixel(7, 255, 0, 0, brightness)
