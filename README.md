@@ -20,7 +20,12 @@ Raspberry Pi status strip for https://github.com/shukriadams/arewedown. Shows co
       sudo apt-get install python3-blinkt -y
       
 - clone this repo, then CD to it.
-- set blinketlights up as a service 
+
+- to manually start run
+
+      python main.py
+
+- to set blinketlights up as a service 
       
       sudo cp blinketlights.service /etc/systemd/system/blinkenlights.service &&
       sudo systemctl daemon-reload &&
