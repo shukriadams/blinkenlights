@@ -1,8 +1,8 @@
 # Daemonize blinkenlights python script with this.
-# Create file /etc/systemd/system/blinkenlights.service, copy this script's content to it. then run :
-# sudo systemctl daemon-reload
-# sudo systemctl start blinkenlights
-# sudo systemctl enable blinkenlights
+#   sudo cp blinketlights.service /etc/systemd/system/blinkenlights.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl start blinkenlights
+#   sudo systemctl enable blinkenlights
 
 [Unit]
 Description=blinky service
