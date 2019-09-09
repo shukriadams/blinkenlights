@@ -55,10 +55,7 @@ while True:
     if hasConnected:
 
         # gradually shift last light color on successful poll
-        r.increment()
-        g.increment()
-        b.increment()
-        set_pixel(7, r.getValue(), g.getValue(), b.getValue(), brightness)
+        set_pixel(7, r.incrementAndGetValue(), g.incrementAndGetValue(), b.incrementAndGetValue(), brightness)
 
         if passed == True:
             set_pixel(0, 0, 128, 0, brightness)
